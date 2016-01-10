@@ -19,10 +19,9 @@ app.set('port', process.env.PORT || 3000);
 
 //Set up static middleware
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Create applicaton/json parser
-var jsonParser = bodyParser.json();
 
 
 /******************
@@ -59,8 +58,8 @@ app.get('/contact', function(req, res) {
 app.post('/buildimage', function (req, res) {
 	//console.log(req);
 	console.log('Request from decklist textarea receieved');
-	console.log(req.body.dl_txt);
-	res.send('You sent:' + req.body.decklist_text);
+	console.log(req.body);
+	res.send('You sent:' + JSON.stringify(req.body));
 });
 
 //Custom 404
