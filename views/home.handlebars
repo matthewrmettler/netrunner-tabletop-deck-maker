@@ -16,7 +16,7 @@ $(document).ready(function()
     $("#generate").click(function()
     {
     	// This function is called when the button is pressed.
-        var decklist_text = $('input[name=deck_list]').val();
+        var decklist_text = $('textarea#deck_list').val();
 
         $.ajax(
         {
@@ -26,6 +26,9 @@ $(document).ready(function()
             success: function(result)
             {
                 $("#response").html(result);  // Won't work atm, /buildimage does nothing (it logs the request data hopefully)
+            },
+            error: function(jqXHR, textStatus, err) {
+            	$("#response").html('Error in buildimage');
             }
         });
     });
