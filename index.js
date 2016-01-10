@@ -4,6 +4,7 @@
 
 //Import from modules and libraries
 var express = require('express');
+var bodyParser = require('body-parser')
 
 //Initialize app
 var app = express();
@@ -18,6 +19,9 @@ app.set('port', process.env.PORT || 3000);
 
 //Set up static middleware
 app.use(express.static(__dirname + '/public'));
+
+// Create applicaton/json parser
+var jsonParser = bodyParser.json();
 
 
 /******************
@@ -46,7 +50,7 @@ app.get('/about', function(req, res) {
 
 //Receive POST with data being decklist
 // TODO: return a link to the image on imgur as the response
-app.post('/buildimage', express.bodyParser(), function (req, res) {
+app.post('/buildimage', jsonParser, function (req, res) {
 	console.log(req);
 	console.log('Request above receieved');
 	res.redirect('/');
