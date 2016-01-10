@@ -1,0 +1,33 @@
+{
+  "name": "netrunner-tabletop-deck-maker",
+  "version": "1.0.0",
+  "description": "A web app that allows users to create Android: Netrunner decks easily for use in Tabletop Simulator.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewrmettler/netrunner-tabletop-deck-maker.git"
+  },
+  "keywords": [
+    "android",
+    "android:",
+    "netrunner",
+    "netrunner",
+    "tabletop",
+    "tabletop",
+    "simulator",
+    "decks"
+  ],
+  "author": "Matthew Mettler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matthewrmettler/netrunner-tabletop-deck-maker/issues"
+  },
+  "homepage": "https://github.com/matthewrmettler/netrunner-tabletop-deck-maker#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "express3-handlebars": "^0.5.2"
+  }
+}
