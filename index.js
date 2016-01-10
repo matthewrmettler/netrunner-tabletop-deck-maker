@@ -4,7 +4,7 @@
 
 //Import from modules and libraries
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 //Initialize app
 var app = express();
@@ -19,6 +19,7 @@ app.set('port', process.env.PORT || 3000);
 
 //Set up static middleware
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json());
 
 // Create applicaton/json parser
 var jsonParser = bodyParser.json();
@@ -53,7 +54,7 @@ app.get('/about', function(req, res) {
 app.post('/buildimage', jsonParser, function (req, res) {
 	//console.log(req);
 	console.log('Request from decklist textarea receieved');
-	res.redirect('/');
+	console.log(req.body);
 });
 
 //Custom 404
