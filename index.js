@@ -50,7 +50,7 @@ app.post('/buildimage', express.bodyParser(), function (req, res) {
 	console.log(req);
 	console.log('Request above receieved');
 	res.redirect('/');
-}
+});
 
 //Custom 404
 app.use( function(req, res) {
