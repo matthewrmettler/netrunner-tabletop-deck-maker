@@ -60,7 +60,7 @@ app.post('/buildimage', function (req, res) {
 	//console.log(req);
 	console.log('Request from decklist textarea receieved');
 	console.log(req.body.dl_txt);
-	res.send('You sent:' + req.body.decklist_text);
+	res.send('You sent: ' + JSON.stringify(req.body));
 });
 
 //Custom 404
