@@ -4,7 +4,7 @@
 
 //Import from modules and libraries
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 //Initialize app
 var app = express();
