@@ -49,12 +49,18 @@ app.get('/about', function(req, res) {
 	} );
 });
 
+//Contact
+app.get('/contact', function(req, res) {
+	res.render('contact');
+});
+
 //Receive POST with data being decklist
 // TODO: return a link to the image on imgur as the response
-app.post('/buildimage', jsonParser, function (req, res) {
+app.post('/buildimage', function (req, res) {
 	//console.log(req);
 	console.log('Request from decklist textarea receieved');
-	console.log(req.body);
+	console.log(req.body.dl_txt);
+	res.send('You sent:' + req.body.decklist_text);
 });
 
 //Custom 404
