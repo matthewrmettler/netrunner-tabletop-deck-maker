@@ -35,12 +35,22 @@ app.get('/', function(req, res) {
 	res.render('home');
 });
 
+
+
 //About
 app.get('/about', function(req, res) {
 	res.render('about', { 
 		pageTestScript: '/qa/tests-about.js' 
 	} );
 });
+
+//Receive POST with data being decklist
+// TODO: return a link to the image on imgur as the response
+app.post('/buildimage', express.bodyParser(), function (req, res) {
+	console.log(req);
+	console.log('Request above receieved');
+	res.redirect('/');
+}
 
 //Custom 404
 app.use( function(req, res) {

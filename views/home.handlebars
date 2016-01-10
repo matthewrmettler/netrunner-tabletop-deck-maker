@@ -1,1 +1,31 @@
 <h1>Android: Netrunner Tabletop Deck Maker</h1>
+Input your decklist below as exported from netrunnerdb using the export -> markdown function (maybe lel)<br /><br />
+
+
+
+
+<input type="text" id="deck_list" required="required" />
+<input type="button" value="Generate Tabletop Image" id="generate" />
+<div id="response">use AJAX and link to result here (put a loading thing here while it goes down)</div>
+
+<script type="text/javascript">  // TODO: Need to move this script to where it belongs.
+$(document).ready(function()
+{
+    $("#generate").click(function()
+    {
+    	// This function is called when the button is pressed.
+        var decklist_text = $('input[name=deck_list]').val();
+
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/buildimage',
+            data: {dl_txt: decklist_text},
+            success: function(result)
+            {
+                $("#response").html(result);  // Won't work atm, /buildimage does nothing (it logs the request data hopefully)
+            }
+        });
+    });
+});​
+</script>
