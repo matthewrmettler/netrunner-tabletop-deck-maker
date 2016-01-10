@@ -51,8 +51,8 @@ app.get('/about', function(req, res) {
 //Receive POST with data being decklist
 // TODO: return a link to the image on imgur as the response
 app.post('/buildimage', jsonParser, function (req, res) {
-	console.log(req);
-	console.log('Request above receieved');
+	//console.log(req);
+	console.log('Request from decklist textarea receieved');
 	res.redirect('/');
 });
 
