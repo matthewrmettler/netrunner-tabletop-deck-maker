@@ -57,7 +57,8 @@ app.get('/contact', function(req, res) {
 // TODO: return a link to the image on imgur as the response
 app.post('/buildimage', function (req, res) {
 	//console.log(req);
-	console.log('Request from decklist textarea receieved');
+	//console.log('Request from decklist textarea receieved');
+
 	// TODO: put this code somewhere else and call it.  Dunno exactly how to do that.
 	var imgPrefix = '<img src="/img/cards/';
 	var imgPostfix = '.png" />';
@@ -65,6 +66,7 @@ app.post('/buildimage', function (req, res) {
 	var fullList = req.body.dl_txt.replace(/\n/g, "<br />");
 	var splitList = fullList.split('*');
 	var finalList = [];
+	finalList.push(splitList[0].match(/\d{5}/));
 	for (var i = 1; i < splitList.length; i++) {
 		var cardCount = splitList[i].substring(1,2);
 		for (var j = 0; j < cardCount; j++) {
@@ -76,7 +78,7 @@ app.post('/buildimage', function (req, res) {
 	var images = '';
 	for(var i = 0; i < finalList.length; i++)
 	{
-   		images += imgPrefix + finalList[i] + imgPostfix + '<br />';
+   		images += imgPrefix + finalList[i] + imgPostfix;
 	}
 
 	res.send(images);

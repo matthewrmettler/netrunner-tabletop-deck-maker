@@ -8,8 +8,9 @@
         <input type="button" value="Generate Tabletop Image" id="generate" class="btn btn-default" />
       </div>
       <div id="responseMode" class="starter-template">
+        <input type="button" value="Return" class="return btn btn-default" />
         <div id="response"></div>
-        <input type="button" value="Return" id="return" class="btn btn-default" />
+        <input type="button" value="Return" class="return btn btn-default" />
       </div>
     </div>
 
@@ -39,7 +40,7 @@ $(document).ready(function()
             }
         });
     });
-    $('#return').click(function()
+    $('.return').click(function()
     {
         $('#responseMode').hide();
         $('#inputMode').show();
