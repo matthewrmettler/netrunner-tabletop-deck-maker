@@ -58,8 +58,7 @@ app.get('/contact', function(req, res) {
 app.post('/buildimage', function (req, res) {
 	//console.log(req);
 	console.log('Request from decklist textarea receieved');
-	console.log(req.body);
-	res.send('You sent:' + JSON.stringify(req.body));
+	res.send(req.body.dl_txt.replace(/\n/g, "<br />"));
 });
 
 //Custom 404
