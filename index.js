@@ -58,7 +58,32 @@ app.get('/contact', function(req, res) {
 app.post('/buildimage', function (req, res) {
 	//console.log(req);
 	console.log('Request from decklist textarea receieved');
-	res.send(req.body.dl_txt.replace(/\n/g, "<br />"));
+	// TODO: put this code somewhere else and call it.  Dunno exactly how to do that.
+	var imgPrefix = '<img src="/img/cards/';
+	var imgPostfix = '.png" />';
+
+	var fullList = req.body.dl_txt.replace(/\n/g, "<br />");
+	var splitList = fullList.split('*');
+	var finalList = [];
+	for (var i = 1; i < splitList.length; i++) {
+		var cardCount = splitList[i].substring(1,2);
+		for (var j = 0; j < cardCount; j++) {
+			finalList.push(splitList[i].match(/\d{5}/));
+		}
+	}
+
+	//temp
+	var images = '';
+	for(var i = 0; i < finalList.length; i++)
+	{
+   		images += imgPrefix + finalList[i] + imgPostfix + '<br />';
+	}
+
+	res.send(images);
+
+
+	// For testing purposes, to see we're getting everything in the textbox
+	//res.send(req.body.dl_txt.replace(/\n/g, "<br />"));
 });
 
 //Custom 404
