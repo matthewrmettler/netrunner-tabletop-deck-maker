@@ -1,7 +1,37 @@
 body {
   padding-top: 50px;
 }
+
+.background-image {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  display: block;
+  background-image: url('../img/netrunnerbg.jpg');
+  width:100%;
+  height: 100%;
+
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+
+.content {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 .starter-template {
+	  text-shadow: 0 0 2px #000; /* horizontal-offset vertical-offset 'blur' colour */
+	color: #FFF;
   padding: 40px 15px;
   text-align: center;
 }
@@ -9,4 +39,49 @@ body {
 #logo {
 	margin: 0 auto;
 	display: block;
+	border: 2px solid #FFF;
+}
+
+#deck_list {
+	color: black;
+}
+
+.coolButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #1c0e6b;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #1c0e6b;
+	box-shadow:inset 0px 1px 0px 0px #1c0e6b;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5c71d6), color-stop(1, #342e87));
+	background:-moz-linear-gradient(top, #5c71d6 5%, #342e87 100%);
+	background:-webkit-linear-gradient(top, #5c71d6 5%, #342e87 100%);
+	background:-o-linear-gradient(top, #5c71d6 5%, #342e87 100%);
+	background:-ms-linear-gradient(top, #5c71d6 5%, #342e87 100%);
+	background:linear-gradient(to bottom, #5c71d6 5%, #342e87 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5c71d6', endColorstr='#342e87',GradientType=0);
+	background-color:#5c71d6;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #000000;
+}
+.coolButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #342e87), color-stop(1, #5c71d6));
+	background:-moz-linear-gradient(top, #342e87 5%, #5c71d6 100%);
+	background:-webkit-linear-gradient(top, #342e87 5%, #5c71d6 100%);
+	background:-o-linear-gradient(top, #342e87 5%, #5c71d6 100%);
+	background:-ms-linear-gradient(top, #342e87 5%, #5c71d6 100%);
+	background:linear-gradient(to bottom, #342e87 5%, #5c71d6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#342e87', endColorstr='#5c71d6',GradientType=0);
+	background-color:#342e87;
+}
+.coolButton:active {
+	position:relative;
+	top:1px;
 }
