@@ -75,7 +75,7 @@ app.post('/buildimage', function (req, res) {
 	}
 
 	//temp
-	var images = '';
+	var images = 'Your deck has ' + finalList.length + ' cards and is:<br />';
 	for(var i = 0; i < finalList.length; i++)
 	{
    		images += imgPrefix + finalList[i] + imgPostfix;
