@@ -33,7 +33,7 @@ body {
 	  text-shadow: 0 0 2px #000; /* horizontal-offset vertical-offset 'blur' colour */
 	color: #FFF;
   padding: 40px 15px;
-  background-color: rgba(42, 180, 223, 0.2);
+  background-color: rgba(42, 180, 223, 0.4);
 
   text-align: center;
 }
