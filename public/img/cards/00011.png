@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Deckbuilder &middot; NetrunnerDB</title>
+    <link rel="icon" sizes="16x16" href="/favicon.png" />
+    <link rel="icon" sizes="196x196" href="/icon.png" />
+    <link rel="apple-touch-icon" sizes="129x129" href="/apple-touch-icon.png" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/qtip2/2.1.1/jquery.qtip.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora%3A400%2C700%2C400italic%2C700italic%7CExo%7COrbitron&amp;subset=latin%2Clatin-ext">
+    <link rel="stylesheet" href="/bundles/netrunnerdbbuilder/css/style.css?v3.4">
+    <link rel="stylesheet" href="/bundles/netrunnerdbbuilder/css/icons.css?v3.4">
+
+    <script src="/bundles/fosjsrouting/js/router.js?v3.4"></script>
+    <script src="/js/routing?callback=fos.Router.setData"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/qtip2/2.1.1/jquery.qtip.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highcharts/3.0.9/highcharts.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pagedown/1.0/Markdown.Converter.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.textcomplete/0.2.2/jquery.textcomplete.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/taffydb/2.7.2/taffy-min.js"></script>
+    <script src="/bundles/netrunnerdbbuilder/libs/moment-with-locales.min.js?v3.4"></script>
+    <script src="/bundles/netrunnerdbbuilder/libs/moment-timezone-with-data-2010-2020.min.js?v3.4"></script>
+    <script type="text/javascript">
+	var NRDB = {
+		data_loaded: $.Callbacks(),
+		api_url: {
+			sets: '/api/sets/',
+			cards: '/api/cards/'
+		},
+		locale: 'en'
+	};
+	moment.locale(window.navigator.language);
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-44413511-1', 'auto');
+ga('send', 'pageview');
+      </script>
+    <script src="/bundles/netrunnerdbbuilder/js/nrdb.js?v3.4"></script>
+    <script src="/bundles/netrunnerdbbuilder/js/nrdb.user.js?v3.4"></script>
+    <script src="/bundles/netrunnerdbbuilder/js/nrdb.data.js?v3.4"></script>
+    <script src="/bundles/netrunnerdbbuilder/js/nrdb.format.js?v3.4"></script>
+    <script src="/bundles/netrunnerdbbuilder/js/nrdb.tip.js?v3.4"></script>
+
+  </head>
+  <body>
+  <div id="wrapper">
+      <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+                  <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">
+            <span class="icon icon-link-half-top"></span>
+            <span class="icon icon-link-half-bottom"></span>
+            NetrunnerDB
+          </a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/en/decks">My Decks</a></li>
+            <li><a href="/en/decklists/popular">Decklists</a></li>
+            <li><a href="/en/search">Cards</a></li>
+            <li class="hidden-sm dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Factions <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li role="presentation" class="dropdown-header">Runner</li>
+                <li><a href="/en/faction/anarch"><span class="icon icon-anarch influence-anarch"></span> Anarch</a></li>
+                <li><a href="/en/faction/criminal"><span class="icon icon-criminal influence-criminal"></span> Criminal</a></li>
+                <li><a href="/en/faction/shaper"><span class="icon icon-shaper influence-shaper"></span> Shaper</a></li>
+                <li class="divider"></li>
+                <li role="presentation" class="dropdown-header">Corp</li>
+                <li><a href="/en/faction/haas-bioroid"><span class="icon icon-haas-bioroid influence-haas-bioroid"></span> Haas-Bioroid</a></li>
+                <li><a href="/en/faction/jinteki"><span class="icon icon-jinteki influence-jinteki"></span> Jinteki</a></li>
+                <li><a href="/en/faction/nbn"><span class="icon icon-nbn influence-nbn"></span> NBN</a></li>
+                <li><a href="/en/faction/weyland-consortium"><span class="icon icon-weyland-consortium influence-weyland-consortium"></span> Weyland Consortium</a></li>
+              </ul>
+            </li>
+            <li class="hidden-sm"><a href="/en/reviews">Reviews</a></li>
+            <li><a href="/en/rules">Rules</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown hidden-xs hidden-lg">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-search"></span></a>
+                <div class="dropdown-menu">
+                  <form action="/find/" target="_blank">
+                    <input type="text" placeholder="Card Search" class="form-control" name="q">
+                  </form>
+              </div>
+            </li>
+            <li id="login">
+                <a href="#" class="dropdown-toggle loginname" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-right visible-lg-block visible-xs-block external" action="/find/" target="_blank">
+            <div class="form-group">
+              <input type="text" placeholder="Card Search" class="form-control" name="q">
+            </div>
+          </form>
+        </div><!--/.navbar-collapse -->
+              </div>
+    </nav>
+
+<div class="container">
+<h1 class="pagetitle">Sorry.</h1>
+<p class="lead">I tried very hard, but I couldn't find what you're looking for.</p>
+<p><small>And that's pretty much it.</small></p>
+</div>
+    <div id="push"></div>
+  </div>
+  <footer class="hidden-print">
+    <div class="container">
+
+
+    </div>
+    </footer>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    </body>
+</html>
