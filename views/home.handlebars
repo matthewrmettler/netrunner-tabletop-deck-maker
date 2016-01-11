@@ -1,11 +1,15 @@
     <div class="container">
-      <div class="starter-template">
+      <div id="inputMode" class="starter-template">
         <h1>Android: Netrunner Tabletop Deck Maker</h1>
         <p class="lead">Input your decklist below as exported from netrunnerdb using the export -> markdown function (maybe lel)</p>
+        <p class="lead" id="errorMessage">An error has occured.  Please try again later.</p>
         
         <textarea id="deck_list" class="form-control" required="required" rows="12"></textarea><br />
         <input type="button" value="Generate Tabletop Image" id="generate" class="btn btn-default" />
-        <div id="response">use AJAX and link to result here (put a loading thing here while it goes down)</div>
+      </div>
+      <div id="responseMode" class="starter-template">
+        <div id="response"></div>
+        <input type="button" value="Return" id="return" class="btn btn-default" />
       </div>
     </div>
 
@@ -25,12 +29,20 @@ $(document).ready(function()
             data: {dl_txt: decklist_text},
             success: function(result)
             {
-                $("#response").html(result);  // Won't work atm, /buildimage does nothing (it logs the request data hopefully)
+                $('#errorMessage').hide();
+                $('#inputMode').hide();
+                $("#response").html(result);
+                $('#responseMode').show();
             },
             error: function(jqXHR, textStatus, err) {
-            	$("#response").html('Error in buildimage');
+            	$("#errorMessage").show();
             }
         });
+    });
+    $('#return').click(function()
+    {
+        $('#responseMode').hide();
+        $('#inputMode').show();
     });
 });
 </script>

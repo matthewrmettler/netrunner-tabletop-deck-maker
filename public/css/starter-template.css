@@ -49,6 +49,15 @@ body {
 	opacity: 0.5;
 }
 
+#responseMode {
+	display:none;
+}
+
+#errorMessage {
+	color:red;
+	display:none;
+}
+
 .coolButton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #1c0e6b;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #1c0e6b;
