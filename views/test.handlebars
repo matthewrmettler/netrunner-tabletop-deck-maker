@@ -1,4 +1,29 @@
 <div class="starter-template">
 <h1>Sundew Test Page</h1>
-You probably shouldn't be here! :)
+You probably shouldn't be here! :)<br />
+<input type="button" value="Upload The Shadow!" id='upload' class="btn btn-default" /><br />
+<div id="response"></div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $("#upload").click(function()
+    {
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/performtest',
+            success: function(result)
+            {
+            	console.log(result);
+                $("#response").html(result);
+            },
+            error: function(jqXHR, textStatus, err) {
+            	// Somethin went wrong
+            	console.log(textStatus + ' ' + err);
+            }
+        });
+    });
+});
+</script>

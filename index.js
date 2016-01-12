@@ -6,7 +6,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var gm = require('gm');
-var $ = require('jquery');
 
 //Our local libraries
 var deckParser = require('./lib/deckParser');
@@ -74,9 +73,13 @@ app.get('/contact', function(req, res) {
 
 //Test
 app.get('/test', function(req, res) {
-	res.render('test', { 
-		pageTestScript: '/qa/tests-testpage.js' 
-	} );
+	res.render('test')
+});
+
+//Perform Test
+app.get('/performtest', function(req, res) {
+	var resultLink = uploadToImgur('./img/cards/00005.png');
+	res.send(resultLink);
 });
 
 //Receive POST with data being decklist
