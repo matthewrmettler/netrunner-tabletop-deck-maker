@@ -17,7 +17,7 @@ $(document).ready(function()
             dataType: 'text',
             success: function(result) {
             	console.log("Successfully uploaded to " + result);
-                $("#response").text(result);
+                $("#response").html('<a href="' + result + '" target="_blank">' + result + '</a>');
             },
             error: function(jqXHR, textStatus, err) {
             	//Something went wrong

@@ -78,27 +78,9 @@ app.get('/test', function(req, res) {
 
 //Perform Test
 app.post('/performtest', function (req, res) {
-	var resultLink = '';	
-	var performUpload = new Promise(function(resolve, reject) {
-		// do a thing, possibly async, then…
-		resultLink = uploadToImgur('00005');
-
-		if (resultLink != '') {
-			resolve("Stuff worked!");
-	  	}
-		else {
-		    reject(Error("It broke"));
-	  }
+	uploadToImgur('00005', function(resultLink) {
+		res.send(resultLink);
 	});
-
-	performUpload.then(function(result) {
-		console.log(resultLink);
-		res.send(resultLink); // "Stuff worked!"
-	}, function(err) {
-		res.send('ResultLink is ""');
-		console.log(err); // Error: "It broke"
-	});
-
 });
 
 //Receive POST with data being decklist
