@@ -6,6 +6,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var deckParser = require('./lib/deckParser');
+var imgurVariable = require('./lib/imgurUpload');
 
 //Set the .env file correctly
 //Set up following this tutorial: http://kalapun.com/posts/node-js-open-source-and-secret-keys/
@@ -66,6 +67,12 @@ app.get('/contact', function(req, res) {
 	res.render('contact');
 });
 
+//Test
+app.get('/test', function(req, res) {
+	res.render('test', { 
+		pageTestScript: '/qa/tests-testpage.js' 
+	} );
+});
 
 //Receive POST with data being decklist
 // TODO: return a link to the image on imgur as the response
