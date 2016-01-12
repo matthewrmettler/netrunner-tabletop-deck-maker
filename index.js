@@ -6,6 +6,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var gm = require('gm');
+var $ = require('jquery');
 
 //Our local libraries
 var deckParser = require('./lib/deckParser');
@@ -100,6 +101,14 @@ app.use( function(err, req, res, next) {
 	res.status(500);
 	res.render('500');
 });
+
+
+//This really shouldn't be here but yolo
+/******************
+ *  Backend Tests *
+ *****************/
+
+var test1 = uploadToImgur("/img/cards/00005.png");
 
 /******************
  *     Start      *
