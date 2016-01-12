@@ -7,6 +7,17 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var deckParser = require('./lib/deckParser');
 
+//Set the .env file correctly
+//Set up following this tutorial: http://kalapun.com/posts/node-js-open-source-and-secret-keys/
+var fs = require('fs');
+var env = require('node-env-file');
+
+if (fs.existsSync(__dirname + '/.env' )) {
+	env(__dirname + '/.env');
+}
+
+console.log("Client ID: " + process.env.CLIENT_ID);
+
 //Initialize app
 var app = express();
 

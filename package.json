@@ -29,6 +29,7 @@
     "body-parser": "^1.14.2",
     "bootstrap": "^3.3.6",
     "express": "^4.13.3",
-    "express3-handlebars": "^0.5.2"
+    "express3-handlebars": "^0.5.2",
+    "node-env-file": "^0.1.8"
   }
 }
