@@ -2,10 +2,12 @@
  * Initialization *
  ******************/
 
-//Import from modules and libraries
+//Import from external modules and libraries
 var express = require('express');
 var bodyParser = require('body-parser');
 var gm = require('gm');
+
+//Our local libraries
 var deckParser = require('./lib/deckParser');
 var imgurVariable = require('./lib/imgurUpload');
 
@@ -18,7 +20,8 @@ if (fs.existsSync(__dirname + '/.env' )) {
 	env(__dirname + '/.env');
 }
 
-console.log("Client ID: " + process.env.CLIENT_ID);
+//Test to see client ID is set correctly
+//console.log("Client ID: " + process.env.CLIENT_ID);
 
 //Initialize app
 var app = express();

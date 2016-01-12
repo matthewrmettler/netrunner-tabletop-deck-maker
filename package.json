@@ -30,6 +30,7 @@
     "bootstrap": "^3.3.6",
     "express": "^4.13.3",
     "express3-handlebars": "^0.5.2",
+    "gm": "^1.21.1",
     "node-env-file": "^0.1.8"
   }
 }
