@@ -5,6 +5,7 @@
 //Import from modules and libraries
 var express = require('express');
 var bodyParser = require('body-parser');
+var gm = require('gm');
 var deckParser = require('./lib/deckParser');
 var imgurVariable = require('./lib/imgurUpload');
 
