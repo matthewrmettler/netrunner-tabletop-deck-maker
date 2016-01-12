@@ -77,8 +77,9 @@ app.get('/test', function(req, res) {
 });
 
 //Perform Test
-app.get('/performtest', function(req, res) {
-	var resultLink = uploadToImgur('./img/cards/00005.png');
+app.get('/performtest', function (req, res) {
+	var resultLink = uploadToImgur('00005');
+	console.log("app.get /performtest route: " + resultLink);
 	res.send(resultLink);
 });
 
@@ -104,14 +105,6 @@ app.use( function(err, req, res, next) {
 	res.status(500);
 	res.render('500');
 });
-
-
-//This really shouldn't be here but yolo
-/******************
- *  Backend Tests *
- *****************/
-
-var test1 = uploadToImgur("/img/cards/00005.png");
 
 /******************
  *     Start      *

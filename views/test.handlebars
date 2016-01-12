@@ -1,6 +1,6 @@
 <div class="starter-template">
 <h1>Sundew Test Page</h1>
-You probably shouldn't be here! :)<br />
+You probably shouldn't be here! :) If you're not a dev, please click Home above!<br />
 <input type="button" value="Upload The Shadow!" id='upload' class="btn btn-default" /><br />
 <div id="response"></div>
 </div>
@@ -14,14 +14,14 @@ $(document).ready(function()
         {
             type: 'GET',
             url: '/performtest',
-            success: function(result)
-            {
-            	console.log(result);
-                $("#response").html(result);
+            dataType: 'text',
+            success: function(result) {
+            	console.log("Successfully uploaded to " + result);
+                $("#response").text(result);
             },
             error: function(jqXHR, textStatus, err) {
-            	// Somethin went wrong
-            	console.log(textStatus + ' ' + err);
+            	//Something went wrong
+            	console.log("Error: " + textStatus + ' ' + err);
             }
         });
     });
