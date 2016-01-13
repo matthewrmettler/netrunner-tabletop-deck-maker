@@ -5,8 +5,7 @@
 //Import from external modules and libraries
 var express = require('express');
 var bodyParser = require('body-parser');
-var gm = require('gm')
-  , igm = gm.subClass({ imageMagick: true });
+var rimraf = require('rimraf');
 
 //Our local libraries
 var deckParser = require('./lib/deckParser');
@@ -90,10 +89,13 @@ app.post('/performtest', function (req, res) {
 app.post('/buildimage', function (req, res) {
 	console.log('Request from decklist textarea recieved');
 	var cardList = getCardList(req.body.dl_txt);
-	var compositeImage = createDeckImage(cardList);
-
-	uploadToImgur(compositeImage, function(resultLink) {
-		res.send(resultLink);
+	createDeckImage(cardList, function(compositeDirectory) {	
+			uploadToImgur(compositeDirectory + 'full.png', function(resultLink) {
+			res.send(resultLink);
+			rimraf(compositeDirectory, fs, function(err) {
+				if (err) console.log("Could not remove directory");
+			});
+		});
 	});
 });
 
