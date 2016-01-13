@@ -1,26 +1,36 @@
     <div class="container">
       <div id="inputMode" class="starter-template">
         <h1>Android: Netrunner Tabletop Deck Maker</h1>
-        <p class="lead">Input your decklist below as exported from netrunnerdb using the export -> markdown function (maybe lel)</p>
+        <p class="lead">Input your decklist below as exported from netrunnerdb using Export -> Markdown</p>
+        <p class="lead">This is the only supported format.</p>
         <p class="lead" id="errorMessage">An error has occured.  Please try again later.</p>
         
         <textarea id="deck_list" class="form-control" required="required" rows="12"></textarea><br />
         <input type="button" value="Generate Tabletop Image" id="generate" class="btn btn-default" />
       </div>
       <div id="responseMode" class="starter-template">
+        <p class="lead">Your decklist's "Front" image has been uploaded to the URL below.</p>
         <div id="response"></div>
+        <br />
+        <p>In tabletop (as host or promoted), go to Host -> Chest -> Custom -> Deck.<br />
+            Use the above URL for the "Front" image, add a URL for the "Back" image appropriate to your role (corp or runner).<br />
+            IMPORTANT: Set the deck size to your total deck size, PLUS one for your identity. (so if NRDB says 49 cards, put 50).<br />
+            The cards width and height should be at their default, 10 and 7.  Click import and your deck should load!  Save the result to your chest for easy access later.</p>
         <input type="button" value="Return" class="return btn btn-default" />
       </div>
     </div>
 
 
 <script type="text/javascript">
+// TODO: I'll move this somewhere else when I'm not lazy
 $(document).ready(function()
 {
     $("#generate").click(function()
     {
     	// This function is called when the button is pressed.
         var decklist_text = $('textarea#deck_list').val();
+        $('#generate').attr('value', 'Please Wait...');
+        $('#generate,#deck_list').prop('disabled',true);
 
         $.ajax(
         {
@@ -29,18 +39,21 @@ $(document).ready(function()
             data: {dl_txt: decklist_text},
             success: function(result)
             {
-                $('#errorMessage').hide();
-                $('#inputMode').hide();
-                $("#response").html(result);
+                $('#errorMessage,#inputMode').hide();
+                $("#response").html('<a href="' + result + '" target="_blank" class="lead">' + result + '</a>');
                 $('#responseMode').show();
             },
             error: function(jqXHR, textStatus, err) {
             	$("#errorMessage").show();
+                $('#generate,#deck_list').prop('disabled',false);
+                $('#generate').attr('value', 'Generate Tabletop Image');
             }
         });
     });
     $('.return').click(function()
     {
+        $('#generate,#deck_list').prop('disabled',false);
+        $('#generate').attr('value', 'Generate Tabletop Image');
         $('#responseMode').hide();
         $('#inputMode').show();
     });
