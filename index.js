@@ -5,11 +5,13 @@
 //Import from external modules and libraries
 var express = require('express');
 var bodyParser = require('body-parser');
-var gm = require('gm');
+var gm = require('gm')
+  , igm = gm.subClass({ imageMagick: true });
 
 //Our local libraries
 var deckParser = require('./lib/deckParser');
 var imgurVariable = require('./lib/imgurUpload');
+var deckBuilder = require('./lib/deckBuilder');
 
 //Set the .env file correctly
 //Set up following this tutorial: http://kalapun.com/posts/node-js-open-source-and-secret-keys/
@@ -87,8 +89,12 @@ app.post('/performtest', function (req, res) {
 // TODO: return a link to the image on imgur as the response
 app.post('/buildimage', function (req, res) {
 	console.log('Request from decklist textarea recieved');
-	var images = getImagesToDisplay(req.body.dl_txt);
-	res.send(images);
+	var cardList = getCardList(req.body.dl_txt);
+	var compositeImage = createDeckImage(cardList);
+
+	uploadToImgur(compositeImage, function(resultLink) {
+		res.send(resultLink);
+	});
 });
 
 
