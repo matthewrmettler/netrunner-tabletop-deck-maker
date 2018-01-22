@@ -33,7 +33,7 @@
     "gm": "^1.21.1",
     "imgur": "^0.1.7",
     "imgur-node-api": "^0.1.0",
-    "jquery": "^2.2.0",
+    "jquery": "^3.0.0",
     "node-env-file": "^0.1.8",
     "node-imgur": "^0.1.2",
     "rimraf": "^2.5.0"
